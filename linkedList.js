@@ -84,7 +84,6 @@ class LinkedList {
 //current is set to next
 
   insertAt(data, index){
-    console.log('here I am')
     let count = 0;
     let previous = this.head;
     let current = this.head;
@@ -101,23 +100,34 @@ class LinkedList {
     }
   }
 
-  insertAfter(newItem, item){
-
-  }
-
-  insertBefore(newItem, refItem){
-    let currNode = this.head;
-    let previousNode = this.head;
-    while (currNode) {
-      if (currNode.next === refItem ){
-        return previousNode.next = new _Node(newItem, refItem);
+  insertAfter(newItem, refItem){
+    let current = this.head;
+    let previous = this.head;
+    while (current) {
+      if (current.value === refItem ){
+        current.next = new _Node(newItem, current.next)
+        return;
       }
-      previousNode = currNode;
-      currNode = currNode.next;
+      previous = current;
+      current = current.next;
     }
   }
 
-
+//traverse to insertion point (find refItem)
+//create the new node (newItem)
+//set the newItem's next pointer to the refItem
+  insertBefore(newItem, refItem){
+    let current = this.head;
+    let previous = this.head;
+    while (current) {
+      if (current.value === refItem ){
+        previous.next = new _Node(newItem, current)
+        return;
+      }
+      previous = current;
+      current = current.next;
+    }
+  }
 
 }
 
@@ -133,12 +143,13 @@ function main() {
   SLL.insertLast('Helo');
   SLL.insertLast('Husker');
   SLL.insertLast('Starbuck');
-  //   SLL.insertBefore('Athena', 'Boomer');
+  SLL.insertLast('Tauhida');
   //   SLL.remove('squirrel');
-  //   console.log(SLL.find(3));
-  SLL.insertAt('Kat', 3);
+  SLL.insertBefore('Athena', 'Boomer');
+  SLL.insertAfter('Hotdog', 'Helo');
+  // SLL.insertAt('Kat', 3);
+  // SLL.remove('Tauhida');
   console.log(SLL);
-//   console.log('ive ran in main');
 }
 
 main();
