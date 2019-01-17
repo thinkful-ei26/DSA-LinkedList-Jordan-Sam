@@ -79,13 +79,26 @@ class LinkedList {
     previousNode.next = currNode.next;
   }
 
+//each time it goes through the while loop:
+//previous is set to current
+//current is set to next
 
   insertAt(data, index){
-    const previous = find(index - 1);
-    let newNode = new _Node(data);
-    newNode.next = previous.next; 
-    previous.next = newNode;
-    return this.head;
+    console.log('here I am')
+    let count = 0;
+    let previous = this.head;
+    let current = this.head;
+
+    while(current){
+      if(count === (index)){
+        previous.next = new _Node(data, current)
+        return; 
+      }
+
+      previous = current;
+      current = current.next;
+      count = count + 1
+    }
   }
 
   insertAfter(newItem, item){
