@@ -131,13 +131,9 @@ class LinkedList {
 
 }
 
-// const display = (SLL) => {
-
-// }
-
+const SLL = new LinkedList();
 
 function main() {
-  const SLL = new LinkedList();
   SLL.insertFirst('Apollo');
   SLL.insertLast('Boomer');
   SLL.insertLast('Helo');
@@ -147,10 +143,53 @@ function main() {
   //   SLL.remove('squirrel');
   SLL.insertBefore('Athena', 'Boomer');
   SLL.insertAfter('Hotdog', 'Helo');
-  // SLL.insertAt('Kat', 3);
+  SLL.insertAt('Kat', 3);
   // SLL.remove('Tauhida');
-  console.log(SLL);
+  // console.log(SLL);
+  display(SLL)
+  return main;
+}
+main()
+
+//display the links list
+function display(list){
+  let current = list.head;
+  while (current !== null) {
+    console.log(current.value);
+    current = current.next;
+  } 
 }
 
-main();
+//initiate a count
+//pass in the linked list
+//if list exists, loop through each item and increment
+//return 
+
+function size(list){
+  let count = 0
+  let current = list.head;
+  if (current != null){
+    return count;
+  }
+  else{
+    count++
+  }
+  while(!(current.next == null)){
+    count++;
+    current = current.next
+  }
+  return count;        
+}
+
+
+// function isEmpty(SLL){
+// if (SLL === undefined || null)
+// console.log('The List is empty')   
+// return           
+// }
+
+// function findPrevious(node){
+// main
+// }
+
 
